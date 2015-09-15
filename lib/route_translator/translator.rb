@@ -132,7 +132,7 @@ module RouteTranslator
       else
         opts[:default] = str
       end
-      res    = I18n.translate(str, opts)
+      res    = I18n.with_locale(locale) { I18n.translate(str, opts) }
       res    = res[:as] if res.is_a?(Hash)
       res    = str if res.nil?
       URI.escape(res)
